@@ -23,10 +23,10 @@ export const AppRootErrorBoundary = () => {
       role="alert"
       className="flex h-screen w-screen flex-col items-center justify-center gap-4 text-center"
     >
-      <h2 className="text-lg font-semibold text-gray-900">
+      <h2 className="text-foreground text-lg font-semibold">
         Something went wrong
       </h2>
-      <p className="max-w-md text-sm text-gray-600">{message}</p>
+      <p className="text-muted-foreground max-w-md text-sm">{message}</p>
       <Button onClick={() => window.location.reload()}>Refresh</Button>
     </div>
   );

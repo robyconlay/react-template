@@ -6,8 +6,8 @@ import { paths } from '@/config/paths';
 const LandingRoute = () => {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-6 px-6 text-center">
-      <h1 className="text-3xl font-bold text-gray-900">React Template</h1>
-      <p className="max-w-md text-gray-600">
+      <h1 className="text-foreground text-3xl font-bold">React Template</h1>
+      <p className="text-muted-foreground max-w-md">
         A strict, docs-first starting point. Read <code>/docs</code> and{' '}
         <code>AGENTS.md</code> before building anything.
       </p>

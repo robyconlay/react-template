@@ -39,15 +39,15 @@ const DiscussionRoute = () => {
     <main className="mx-auto max-w-2xl space-y-4 p-6">
       <Link
         to={paths.discussions.getHref()}
-        className="text-brand-600 text-sm underline"
+        className="text-primary text-sm underline"
       >
         &larr; Back to discussions
       </Link>
-      <h1 className="text-2xl font-semibold text-gray-900">
+      <h1 className="text-foreground text-2xl font-semibold">
         {discussion.title}
       </h1>
-      <p className="text-sm text-gray-500">by {discussion.author}</p>
-      <p className="whitespace-pre-line text-gray-800">{discussion.body}</p>
+      <p className="text-muted-foreground text-sm">by {discussion.author}</p>
+      <p className="text-foreground whitespace-pre-line">{discussion.body}</p>
     </main>
   );
 };

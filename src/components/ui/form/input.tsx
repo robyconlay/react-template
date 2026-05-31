@@ -30,7 +30,7 @@ export const Input = ({
       <input
         type={type}
         className={cn(
-          'focus:border-brand-500 focus:ring-brand-500 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:ring-1 focus:outline-none',
+          'focus:border-ring focus:ring-ring border-input block w-full rounded-md border px-3 py-2 text-sm shadow-sm focus:ring-1 focus:outline-none',
           className,
         )}
         {...registration}

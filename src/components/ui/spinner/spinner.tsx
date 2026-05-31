@@ -15,7 +15,7 @@ export type SpinnerProps = {
 export const Spinner = ({ size = 'md', className }: SpinnerProps) => {
   return (
     <svg
-      className={cn('text-brand-600 animate-spin', sizes[size], className)}
+      className={cn('text-primary animate-spin', sizes[size], className)}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"

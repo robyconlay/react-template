@@ -34,9 +34,10 @@ Components land in `src/components/ui` and are yours to edit. Keep them
 
 - **Tailwind only.** No CSS-in-JS, no new `.css` files.
 - There is **no `tailwind.config.js`**. Design tokens are declared in
-  `src/index.css` inside the `@theme { ... }` block. Each token becomes a
-  utility automatically — e.g. `--color-brand-600` → `bg-brand-600`,
-  `text-brand-600`, `border-brand-600`.
+  `src/index.css` inside the `@theme { ... }` block (static tokens) or wired
+  from the shadcn `:root` / `.dark` variables via `@theme inline`. Each token
+  becomes a utility automatically — e.g. `--color-primary` → `bg-primary`,
+  `text-primary`, `border-primary`.
 - To add or change a color, font, spacing, etc., **edit `@theme` in
   `src/index.css`** — do not hardcode hex values in components.
 - Merge/condition classes with `cn()` from `@/utils/cn`. Never concatenate
@@ -52,7 +53,9 @@ export const Badge = ({ active, className }: BadgeProps) => (
   <span
     className={cn(
       'rounded px-2 py-0.5 text-xs',
-      active ? 'bg-brand-600 text-white' : 'bg-gray-100 text-gray-600',
+      active
+        ? 'bg-primary text-primary-foreground'
+        : 'bg-gray-100 text-gray-600',
       className,
     )}
   />

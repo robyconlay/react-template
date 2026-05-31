@@ -19,20 +19,22 @@ export const DiscussionsList = () => {
   const discussions = discussionsQuery.data?.data ?? [];
 
   if (discussions.length === 0) {
-    return <p className="text-sm text-gray-500">No discussions yet.</p>;
+    return <p className="text-muted-foreground text-sm">No discussions yet.</p>;
   }
 
   return (
-    <ul className="divide-y divide-gray-200 rounded-md border border-gray-200">
+    <ul className="divide-border divide-y rounded-md border">
       {discussions.map((discussion) => (
         <li key={discussion.id} className="p-4">
           <Link
             to={paths.discussion.getHref(discussion.id)}
-            className="hover:text-brand-600 font-medium text-gray-900"
+            className="text-foreground hover:text-primary font-medium"
           >
             {discussion.title}
           </Link>
-          <p className="mt-1 text-sm text-gray-500">by {discussion.author}</p>
+          <p className="text-muted-foreground mt-1 text-sm">
+            by {discussion.author}
+          </p>
         </li>
       ))}
     </ul>

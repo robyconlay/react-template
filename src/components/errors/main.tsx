@@ -12,7 +12,7 @@ export const MainErrorFallback = ({ resetErrorBoundary }: FallbackProps) => {
       role="alert"
       className="flex h-screen w-screen flex-col items-center justify-center gap-4 text-center"
     >
-      <h2 className="text-lg font-semibold text-gray-900">
+      <h2 className="text-foreground text-lg font-semibold">
         Something went wrong
       </h2>
       <Button onClick={() => resetErrorBoundary()}>Try again</Button>

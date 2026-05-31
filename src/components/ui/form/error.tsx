@@ -9,7 +9,7 @@ export const FormError = ({ errorMessage }: FormErrorProps) => {
     <div
       role="alert"
       aria-label={errorMessage}
-      className="text-sm text-red-600"
+      className="text-destructive text-sm"
     >
       {errorMessage}
     </div>

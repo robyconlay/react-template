@@ -28,7 +28,7 @@ export const CreateDiscussion = () => {
   }
 
   return (
-    <div className="w-full max-w-sm rounded-md border border-gray-200 p-4">
+    <div className="bg-card text-card-foreground w-full max-w-sm rounded-md border p-4">
       <Form
         onSubmit={(values) => createDiscussionMutation.mutate({ data: values })}
         schema={createDiscussionInputSchema}

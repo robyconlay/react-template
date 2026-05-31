@@ -31,9 +31,14 @@ type SideNavigationItem = {
 
 const Logo = () => {
   return (
-    <Link className="flex items-center text-white" to={paths.home.getHref()}>
+    <Link
+      className="text-sidebar-foreground flex items-center"
+      to={paths.home.getHref()}
+    >
       <img className="h-8 w-auto" src={logo} alt="Workflow" />
-      <span className="text-sm font-semibold text-white">React Template</span>
+      <span className="text-sidebar-foreground text-sm font-semibold">
+        React Template
+      </span>
     </Link>
   );
 };
@@ -74,7 +79,7 @@ const Progress = () => {
 
   return (
     <div
-      className="fixed top-0 left-0 h-1 bg-blue-500 transition-all duration-200 ease-in-out"
+      className="bg-primary fixed top-0 left-0 h-1 transition-all duration-200 ease-in-out"
       style={{ width: `${progress}%` }}
     ></div>
   );
@@ -99,7 +104,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="bg-muted/40 flex min-h-screen w-full flex-col">
-      <aside className="fixed inset-y-0 left-0 z-10 hidden w-60 flex-col border-r bg-black sm:flex">
+      <aside className="bg-sidebar text-sidebar-foreground border-sidebar-border fixed inset-y-0 left-0 z-10 hidden w-60 flex-col border-r sm:flex">
         <nav className="flex flex-col items-center gap-4 px-2 py-4">
           <div className="flex h-16 shrink-0 items-center px-4">
             <Logo />
@@ -111,15 +116,16 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
               end={item.name !== 'Discussions'}
               className={({ isActive }) =>
                 cn(
-                  'text-gray-300 hover:bg-gray-700 hover:text-white',
+                  'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
                   'group flex w-full flex-1 items-center rounded-md p-2 text-base font-medium',
-                  isActive && 'bg-gray-900 text-white',
+                  isActive &&
+                    'bg-sidebar-accent text-sidebar-accent-foreground',
                 )
               }
             >
               <item.icon
                 className={cn(
-                  'text-gray-400 group-hover:text-gray-300',
+                  'text-sidebar-foreground/70 group-hover:text-sidebar-foreground',
                   'mr-4 size-6 shrink-0',
                 )}
                 aria-hidden="true"
@@ -141,7 +147,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
             </DrawerTrigger>
             <DrawerContent
               side="left"
-              className="bg-black pt-10 text-white sm:max-w-60"
+              className="bg-sidebar text-sidebar-foreground pt-10 sm:max-w-60"
             >
               <nav className="grid gap-6 text-lg font-medium">
                 <div className="flex h-16 shrink-0 items-center px-4">
@@ -154,15 +160,16 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                     end
                     className={({ isActive }) =>
                       cn(
-                        'text-gray-300 hover:bg-gray-700 hover:text-white',
+                        'text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground',
                         'group flex w-full flex-1 items-center rounded-md p-2 text-base font-medium',
-                        isActive && 'bg-gray-900 text-white',
+                        isActive &&
+                          'bg-sidebar-accent text-sidebar-accent-foreground',
                       )
                     }
                   >
                     <item.icon
                       className={cn(
-                        'text-gray-400 group-hover:text-gray-300',
+                        'text-sidebar-foreground/70 group-hover:text-sidebar-foreground',
                         'mr-4 size-6 shrink-0',
                       )}
                       aria-hidden="true"
@@ -187,13 +194,13 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
             <DropdownMenuContent align="end">
               <DropdownMenuItem
                 onClick={() => navigate(paths.app.profile.getHref())}
-                className={cn('block px-4 py-2 text-sm text-gray-700')}
+                className={cn('block px-4 py-2 text-sm')}
               >
                 Your Profile
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem
-                className={cn('block w-full px-4 py-2 text-sm text-gray-700')}
+                className={cn('block w-full px-4 py-2 text-sm')}
                 onClick={() => logout.mutate({})}
               >
                 Sign Out

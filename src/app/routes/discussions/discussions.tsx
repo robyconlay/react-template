@@ -18,7 +18,7 @@ const DiscussionsRoute = () => {
   return (
     <main className="mx-auto max-w-2xl space-y-6 p-6">
       <div className="flex items-start justify-between gap-4">
-        <h1 className="text-2xl font-semibold text-gray-900">Discussions</h1>
+        <h1 className="text-foreground text-2xl font-semibold">Discussions</h1>
         <CreateDiscussion />
       </div>
       <DiscussionsList />
