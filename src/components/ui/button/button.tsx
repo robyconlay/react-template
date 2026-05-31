@@ -57,8 +57,14 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        {isLoading && <Spinner size="sm" className="text-current" />}
-        {children}
+        {asChild ? (
+          children
+        ) : (
+          <>
+            {isLoading && <Spinner size="sm" className="text-current" />}
+            {children}
+          </>
+        )}
       </Comp>
     );
   },

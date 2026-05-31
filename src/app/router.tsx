@@ -1,8 +1,9 @@
 import { type QueryClient, useQueryClient } from '@tanstack/react-query';
 import { type ComponentType, useMemo } from 'react';
-import { createBrowserRouter, type LoaderFunction } from 'react-router';
+import { createBrowserRouter, type LoaderFunction, Outlet } from 'react-router';
 import { RouterProvider } from 'react-router/dom';
 
+import { AppRootErrorBoundary } from '@/components/errors/app-root';
 import { paths } from '@/config/paths';
 
 type RouteModule = {
@@ -29,22 +30,34 @@ const convert = (queryClient: QueryClient) => (m: RouteModule) => {
 const createAppRouter = (queryClient: QueryClient) =>
   createBrowserRouter([
     {
-      path: paths.home.path,
-      lazy: () => import('./routes/landing').then(convert(queryClient)),
-    },
-    {
-      path: paths.discussions.path,
-      lazy: () =>
-        import('./routes/discussions/discussions').then(convert(queryClient)),
-    },
-    {
-      path: paths.discussion.path,
-      lazy: () =>
-        import('./routes/discussions/discussion').then(convert(queryClient)),
-    },
-    {
-      path: '*',
-      lazy: () => import('./routes/not-found').then(convert(queryClient)),
+      // Pathless root route: its ErrorBoundary catches render/loader/action
+      // errors thrown anywhere in the child routes below.
+      ErrorBoundary: AppRootErrorBoundary,
+      Component: Outlet,
+      children: [
+        {
+          path: paths.home.path,
+          lazy: () => import('./routes/landing').then(convert(queryClient)),
+        },
+        {
+          path: paths.discussions.path,
+          lazy: () =>
+            import('./routes/discussions/discussions').then(
+              convert(queryClient),
+            ),
+        },
+        {
+          path: paths.discussion.path,
+          lazy: () =>
+            import('./routes/discussions/discussion').then(
+              convert(queryClient),
+            ),
+        },
+        {
+          path: '*',
+          lazy: () => import('./routes/not-found').then(convert(queryClient)),
+        },
+      ],
     },
   ]);
 
